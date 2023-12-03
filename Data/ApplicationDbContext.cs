@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using EvidentaMasini.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EvidentaMasini.Data
@@ -9,5 +10,9 @@ namespace EvidentaMasini.Data
             : base(options)
         {
         }
+
+        public DbSet<CombustionType>? combustionTypes { get; set; }
+        public DbSet<Car>? cars { get; set; }
+        public DbSet<User>? users { get; set; }
     }
 }

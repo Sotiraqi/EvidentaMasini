@@ -6,6 +6,7 @@ namespace EvidentaMasini.Models
     public class Car
     {
         [Required]
+        [Key]
         [Display(Name = "Numar de sasiu (VIN)")]
         public string? vin {  get; set; }
         [Required]
