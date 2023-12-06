@@ -22,7 +22,8 @@ namespace EvidentaMasini.Models
         [Display(Name = "Capacitatea cilindrica")]
         public int capacity { get; set; }
         [Required]
-        [ForeignKey("combustionId")]
+        public int carCombustionId { get; set; }
+        [ForeignKey("carCombustionId")]
         public virtual CombustionType? combustion { get; set; }
         [Required]
         [Display(Name = "Masa maxima autorizata")]

@@ -1,0 +1,128 @@
+@using EvidentaMasini.Models;
+@model IEnumerable<Car>
+@{
+    ViewData["Title"] = "Index";
+
+
+    <br /><br />
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info">Product List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; Add New Product</a>
+        </div>
+
+    </div>
+    <br />
+    <div>
+        <table class="table table-striped border" id="myTable">
+            <thead>
+            <tr class="table-info">
+                <th>
+                    @Html.DisplayNameFor(c => c.vin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.make)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.tip)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.capacity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.carCombustionId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.weight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.color)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.power)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.civ)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.plates)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.owner)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.registration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.revision)
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+       
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.vin</td>
+                        <td>@item.make</td>
+                        <td>@item.model</td>
+                        <td>@item.capacity</td>
+                        <td>@item.combustion</td>
+                        <td>@item.weight</td>
+                        <td>@item.color</td>
+                        <td>@item.power</td>
+                        <td>@item.civ</td>
+                        <td>@item.plates</td>
+                        <td>@item.registration</td>
+                        <td>@item.owner</td>
+                        <td>@item.revision</td>
+                        <td>
+                            <partial name="_ButtonPartial" model="@item.vin" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+
+    </table>
+    </div>
+}
+
+@section scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#myTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'pageLength','copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        } );
+        $(function(){
+            var save = '@TempData["save"]'
+            if(save!='') {
+                alertify.succe
+            var edit = '@TempData["edit"]'
+            if(edit!='') {
+                alertify.success(edit);
+            }ss(save);
+            }
+            var del = '@TempData["delete"]'
+            if (del!='') {
+                alertify.error(del);
+            }
+        })
+    </script>
+}
+
+
+
