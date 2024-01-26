@@ -9,7 +9,7 @@ namespace EvidentaMasini.Areas.User.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext _db;
+        private readonly ApplicationDbContext _db;
 
         public HomeController(ApplicationDbContext db)
         {

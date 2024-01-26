@@ -9,9 +9,9 @@ namespace EvidentaMasini.Areas.Admin.Controllers
     [Area("Admin")]
     public class RoleController : Controller
     {
-        RoleManager<IdentityRole> _roleManager;
-        UserManager<IdentityUser> _userManager;
-        ApplicationDbContext _db;
+        readonly RoleManager<IdentityRole> _roleManager;
+        readonly UserManager<IdentityUser> _userManager;
+        readonly ApplicationDbContext _db;
         public RoleController(RoleManager<IdentityRole> roleManager, ApplicationDbContext db, UserManager<IdentityUser> userManager)
         {
             _roleManager = roleManager;
@@ -53,7 +53,7 @@ namespace EvidentaMasini.Areas.Admin.Controllers
         }
 
 
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> EditDelete(string id)
         {
             var role = await _roleManager.FindByIdAsync(id);
             if (role == null)
@@ -90,18 +90,7 @@ namespace EvidentaMasini.Areas.Admin.Controllers
             }
             return View();
         }
-
-        public async Task<IActionResult> Delete(string id)
-        {
-            var role = await _roleManager.FindByIdAsync(id);
-            if (role == null)
-            {
-                return NotFound();
-            }
-            ViewBag.id = role.Id;
-            ViewBag.name = role.Name;
-            return View();
-        }
+                
 
         [HttpPost]
         [ActionName("Delete")]

@@ -9,8 +9,8 @@ namespace EvidentaMasini.Areas.Customer.Controllers
     [Area("Customer")]
     public class UserController : Controller
     {
-        UserManager<IdentityUser> _userManager;
-        ApplicationDbContext _db;
+        readonly UserManager<IdentityUser> _userManager;
+        readonly ApplicationDbContext _db;
         public UserController(UserManager<IdentityUser> userManager, ApplicationDbContext db)
         {
             _userManager = userManager;
@@ -28,7 +28,7 @@ namespace EvidentaMasini.Areas.Customer.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(user user)
+        public async Task<IActionResult> Create(Models.User user)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace EvidentaMasini.Areas.Customer.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(user user)
+        public async Task<IActionResult> Edit(Models.User user)
         {
             var userInfo = _db.users!.FirstOrDefault(c => c.Id == user.Id);
             if (userInfo == null)
@@ -104,7 +104,7 @@ namespace EvidentaMasini.Areas.Customer.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Lockout(user user)
+        public async Task<IActionResult> Lockout(Models.User user)
         {
             var userInfo = _db.users!.FirstOrDefault(c => c.Id == user.Id);
             if (userInfo == null)
@@ -133,7 +133,7 @@ namespace EvidentaMasini.Areas.Customer.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Active(user user)
+        public async Task<IActionResult> Active(Models.User user)
         {
             var userInfo = _db.users!.FirstOrDefault(c => c.Id == user.Id);
             if (userInfo == null)
@@ -162,7 +162,7 @@ namespace EvidentaMasini.Areas.Customer.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(user user)
+        public async Task<IActionResult> Delete(Models.User user)
         {
             var userInfo = _db.users!.FirstOrDefault(c => c.Id == user.Id);
             if (userInfo == null)

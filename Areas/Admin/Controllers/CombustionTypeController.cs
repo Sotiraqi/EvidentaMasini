@@ -7,7 +7,7 @@ namespace EvidentaMasini.Areas.Admin.Controllers
     [Area("Admin")]
     public class CombustionTypeController : Controller
     {
-        private ApplicationDbContext? _db;
+        private readonly ApplicationDbContext? _db;
 
         public CombustionTypeController(ApplicationDbContext? db)
         {
@@ -43,9 +43,9 @@ namespace EvidentaMasini.Areas.Admin.Controllers
             return View(combustionType);
         }
 
-        //GET Edit Action Method
+        //GET Edit Details Delete Action Method
 
-        public ActionResult Edit(int? id)
+        public ActionResult EditDetailstDelete(int? id)
         {
             if (id == null)
             {
@@ -78,23 +78,6 @@ namespace EvidentaMasini.Areas.Admin.Controllers
         }
 
 
-        //GET Details Action Method
-
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var productCategory = _db?.combustionTypes?.Find(id);
-            if (productCategory == null)
-            {
-                return NotFound();
-            }
-            return View(productCategory);
-        }
-
         //POST Edit Action Method
 
         [HttpPost]
@@ -103,23 +86,6 @@ namespace EvidentaMasini.Areas.Admin.Controllers
         {
             return RedirectToAction(nameof(Index));
 
-        }
-
-        //GET Delete Action Method
-
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var productCategory = _db?.combustionTypes?.Find(id);
-            if (productCategory == null)
-            {
-                return NotFound();
-            }
-            return View(productCategory);
         }
 
         //POST Delete Action Method

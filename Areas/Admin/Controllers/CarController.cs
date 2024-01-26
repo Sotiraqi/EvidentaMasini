@@ -10,7 +10,7 @@ namespace EvidentaMasini.Areas.Admin.Controllers
     public class CarController : Controller
     {
         
-        private ApplicationDbContext _db;
+        private readonly ApplicationDbContext _db;
 
 
         public CarController(ApplicationDbContext db)

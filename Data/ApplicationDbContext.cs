@@ -13,6 +13,6 @@ namespace EvidentaMasini.Data
 
         public DbSet<CombustionType>? combustionTypes { get; set; }
         public DbSet<Car>? cars { get; set; }
-        public DbSet<user>? users { get; set; }
+        public DbSet<User>? users { get; set; }
     }
 }
